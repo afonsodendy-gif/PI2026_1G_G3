@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saúde Sempre</title>
+    <script src=""></script>
+
+</head>
+<body>
+        <header class="menu">
+
+            <div class="logo">
+                <img src="img/logo.png" alt="Logo Saúde Sempre">
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicial</a></li>
+                    <li><a href="imc.html">Calcular IMC</a></li>
+                    <li><a href="rotina.html">Rotinas de Exercícios</a></li>
+                </ul>
+            </nav>
+
+        </header>
+    <main>
+
+        <h2>Calculadora de IMC</h2>
+        <p>IMC (Índice de Massa Corporal) é uma medida usada para avaliar se uma pessoa está com o peso adequado em relação à sua altura.</p>
+        <hr>
+
+        
+        <form id="imcForm">
+            <div>
+                <label for="peso"><strong>Peso (KG)</strong></label>
+                <input type="number" id="peso" name="peso" placeholder="Ex: 89" step="0.1" min="1" required>
+            </div>
+<br>
+            <div>
+                <label for="altura"><strong>Altura (CM)</strong></label>
+                <input type="number" id="altura" name="altura" placeholder="Exemplo: 175" step="0.1" min="1" required>
+            </div>
+
+            <br>
+            <button type="submit">Calcular IMC</button>
+        </form>
+
+<br><hr><br>
+
+        <section id="res">
+            <h3>Seu IMC:</h3>
+            <p id="valorIMC">—</p>
+            <p id="classIMC">Aguardando cálculo...</p>
+        </section>
+
+<br><hr><br>
+
+        <section>
+            <h3>Classificação IMC</h3>
+            <ul>
+                <li><strong>Faixa de IMC</strong></li>
+                <li>Abaixo de 18,5 — <strong>Abaixo do peso</strong></li>
+                <li>18,5 a 24,9 — <strong>Peso normal</strong></li>
+                <li>25 a 29,9 — <strong>Sobrepeso</strong></li>
+                <li>30 a 34,9 — <strong>Obesidade Grau 1</strong></li>
+                <li>35 a 39,9 — <strong>Obesidade Grau 2</strong></li>
+                <li>Acima de 40 — <strong>Obesidade Grau 3</strong></li>
+            </ul>
+        </section>
+
+        <hr>
+
+    </main>
+
+
+    <footer>
+        <section>
+            <h4>Seções</h4>
+            <p>Inicio</p>
+            <p>Calcular IMC</p>
+            <p>Rotina de Exercícios</p>
+        </section>
+
+        <section>
+            <h4>Contato</h4>
+            <a href=""><img src="/Projeto/Pi Grupo3/Imagens/instagram.avif  " alt="Instagram"></a>
+            <p>@SaudeSempre._org</p>
+            <a href=""><img src="/Projeto/Pi Grupo3/Imagens/tiktok.avif" alt="TikTok"></a>
+            <p>@saudesempre.org</p>
+            <a href=""><img src="/Projeto/Pi Grupo3/Imagens/facebook.jfif" alt="Facebook"></a>
+            <p>Afonso Ronaldo</p>
+        </section>
+    </footer>
+
+   
+    
+</body>
+</html> 
