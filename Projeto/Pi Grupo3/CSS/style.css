@@ -40,14 +40,32 @@ body{
     color: #333;
 }
 
+.menu img{
+    width: 180px;
+    height: auto;
+    margin-right: 30px;
+}
+
 
 
 .banner{
+    position: relative;
     height: 400px;
-    background: url("") center/cover no-repeat;
+    overflow: hidden;
+
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.banner img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
 .banner h1{
@@ -55,7 +73,6 @@ body{
     font-size: 48px;
     text-shadow: 2px 2px 5px black;
 }
-
 
 
 .cards{
