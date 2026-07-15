@@ -40,11 +40,11 @@ body{
     color: #333;
 }
 
-/* ================= BANNER ================= */
+
 
 .banner{
     height: 400px;
-    background: url("img/banner.jpg") center/cover no-repeat;
+    background: url("") center/cover no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,7 +56,7 @@ body{
     text-shadow: 2px 2px 5px black;
 }
 
-/* ================= CARDS ================= */
+
 
 .cards{
     background: #4c8b22;
@@ -90,7 +90,7 @@ body{
     margin-bottom: 10px;
 }
 
-/* ================= BENEFÍCIOS ================= */
+
 
 .beneficos{
     background: #4c8b22;
@@ -112,7 +112,7 @@ body{
     line-height: 1.6;
 }
 
-/* ================= RODAPÉ ================= */
+
 
 .rodape{
     background: white;
