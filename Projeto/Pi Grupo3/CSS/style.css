@@ -1,268 +1,433 @@
+/* ============================================================
+   SAÚDE SEMPRE — style.css
+   Feito para casar com o HTML que vocês já têm:
+   - header.menu / .logo / .logo-img / nav
+   - main > img, h1, .card (h3+article), h2, ul  (index.html)
+   - #imcForm, #res, #valorIMC, #classIMC          (imc.html)
+   - .banner, .cards, .container-cards, .card, .extras, .card-pequeno (rotina.html)
+   - footer > section > h4/p/a>img
+   ============================================================ */
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+:root{
+  --verde-escuro: #3f6b34;
+  --verde-medio:  #5a9245;
+  --verde-claro:  #eaf4e4;
+  --verde-vivo:   #7bc142;
+  --branco:       #ffffff;
+  --texto-escuro: #23321c;
+  --texto-claro:  #f4f9f0;
+  --cinza-texto:  #5f6b58;
+  --sombra: 0 6px 18px rgba(0,0,0,.15);
+  --raio: 10px;
+  --fonte: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
 }
 
+*{ box-sizing: border-box; }
 
 body{
-    background: #4c8b22;
+  margin:0;
+  font-family: var(--fonte);
+  color: var(--texto-escuro);
+  background: var(--branco);
+  line-height: 1.5;
 }
 
+img{ max-width:100%; display:block; }
+a{ text-decoration:none; color:inherit; }
+ul{ margin:0; padding:0; }
 
-.menu{
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background: white;
-    padding: 15px 30px;
-    border-radius: 40px;
+/* ---------------------------------------------------------------
+   HEADER / MENU  (compartilhado pelas 3 páginas)
+--------------------------------------------------------------- */
+
+header.menu{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background: var(--branco);
+  padding: 14px 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  position: sticky;
+  top:0;
+  z-index: 50;
 }
 
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo-img,
 .logo img{
-    width: 170px;
-    height: auto;
-    display: block;
+  width:34px;
+  height:34px;
+  object-fit:contain;
 }
 
-
-
-.banner{
-    position: relative;
-    height: 400px;
-    overflow: hidden;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.logo h2{
+  margin:0;
+  font-size:1.15rem;
+  font-weight:700;
+  color: var(--texto-escuro);
 }
+
+/* nav: index.html usa <a> soltos dentro de <nav>,
+   imc.html e rotina.html usam <nav><ul><li><a></li></ul></nav>.
+   As duas estruturas ficam com a mesma cara: */
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:28px;
+}
+
+nav > a{
+  margin-left:28px;
+}
+
+nav > a:first-child{
+  margin-left:0;
+}
+
+nav a,
+nav ul li a{
+  font-weight:600;
+  font-size:.95rem;
+  color: var(--texto-escuro);
+  padding-bottom:4px;
+  border-bottom:2px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+
+nav a:hover,
+nav ul li a:hover{
+  color: var(--verde-medio);
+  border-color: var(--verde-medio);
+}
+
+/* ---------------------------------------------------------------
+   FOOTER  (compartilhado pelas 3 páginas)
+--------------------------------------------------------------- */
+
+footer{
+  display:flex;
+  flex-wrap:wrap;
+  gap:40px;
+  justify-content:space-between;
+  background: var(--branco);
+  border-top:1px solid #eee;
+  padding: 32px;
+  margin-top: 40px;
+}
+
+footer section h4{
+  margin:0 0 10px;
+  font-size:1rem;
+  color: var(--verde-escuro);
+}
+
+footer section p{
+  margin:0 0 8px;
+  font-size:.85rem;
+  color: var(--cinza-texto);
+}
+
+footer section a{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+
+footer section a img{
+  width:22px;
+  height:22px;
+  object-fit:contain;
+  border-radius:50%;
+  background: var(--verde-claro);
+  padding:4px;
+}
+
+/* ============================================================
+   INDEX.HTML — "O que é Sedentarismo"
+   ============================================================ */
+
+main{
+  display:flex;
+  flex-wrap:wrap;
+  gap:18px;
+  background: var(--verde-escuro);
+  color: var(--texto-claro);
+  padding: 0 32px 40px;
+}
+
+/* imagem de topo (hero) — primeira imagem dentro de <main> */
+main > img:first-of-type{
+  flex: 1 1 100%;
+  width: calc(100% + 64px);
+  margin: 0 -32px 24px;
+  height: 280px;
+  object-fit: cover;
+}
+
+main > h1{
+  flex: 1 1 100%;
+  font-size: 1.8rem;
+  margin: 0 0 6px;
+}
+
+main > .card{
+  flex: 1 1 260px;
+}
+
+main > h2{
+  flex: 1 1 100%;
+  font-size: 1.4rem;
+  margin: 24px 0 10px;
+}
+
+/* lista de benefícios no final da index.html */
+main > ul{
+  flex: 1 1 100%;
+  list-style:none;
+}
+
+main > ul > li{
+  position:relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+}
+
+main > ul > li::before{
+  content:"●";
+  position:absolute;
+  left:0;
+  top:2px;
+  color: var(--verde-vivo);
+}
+
+main > ul > li p{
+  margin:0;
+  font-size:.95rem;
+}
+
+/* cartões usados em index.html: <div class="card"><h3>..</h3><article><p>..</p></article></div> */
+.card{
+  background: var(--verde-claro);
+  color: var(--texto-escuro);
+  border-radius: var(--raio);
+  overflow:hidden;
+  box-shadow: var(--sombra);
+}
+
+.card h3{
+  margin:0;
+  background: var(--verde-medio);
+  color:#fff;
+  text-align:center;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.card article{
+  padding: 14px 16px;
+}
+
+.card article p{
+  margin:0;
+  font-size:.9rem;
+  color: var(--texto-escuro);
+}
+
+/* ============================================================
+   IMC.HTML — Calculadora de IMC
+   ============================================================ */
+
+/* nesta página o <main> não tem fundo verde no mockup, é branco */
+body:has(#imcForm) main{
+  display:block;
+  background: var(--branco);
+  color: var(--texto-escuro);
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 24px 60px;
+}
+
+#imcForm{
+  margin-top: 20px;
+}
+
+#imcForm div{
+  margin-bottom: 16px;
+}
+
+#imcForm label{
+  display:block;
+  margin-bottom:6px;
+  font-size:.9rem;
+}
+
+#imcForm input{
+  width:100%;
+  padding: 12px 14px;
+  border-radius: var(--raio);
+  border: 1px solid #d8ded3;
+  background: #f4f6f1;
+  font-size: .95rem;
+}
+
+#imcForm input:focus{
+  outline: 2px solid var(--verde-medio);
+  outline-offset: 1px;
+}
+
+#imcForm button[type="submit"]{
+  display:block;
+  width:100%;
+  background: var(--verde-medio);
+  color:#fff;
+  border:none;
+  padding: 13px 18px;
+  border-radius: 999px;
+  font-weight:700;
+  font-size: .95rem;
+  cursor:pointer;
+  transition: background .2s, transform .1s;
+}
+
+#imcForm button[type="submit"]:hover{ background: var(--verde-vivo); }
+#imcForm button[type="submit"]:active{ transform: scale(.98); }
+
+main hr{
+  border:none;
+  border-top:1px solid #e2e8dc;
+  margin: 24px 0;
+}
+
+#res{
+  text-align:center;
+  background: var(--verde-claro);
+  border-radius: var(--raio);
+  padding: 20px;
+}
+
+#res h3{ margin:0 0 6px; font-size:1rem; }
+
+#valorIMC{
+  font-size: 2.2rem;
+  font-weight:700;
+  color: var(--verde-escuro);
+  margin: 0 0 4px;
+}
+
+#classIMC{
+  margin:0;
+  font-weight:600;
+  color: var(--cinza-texto);
+}
+
+/* tabela de classificação, montada com <ul><li> */
+main section ul{
+  list-style:none;
+}
+
+main section ul li{
+  padding: 8px 6px;
+  border-bottom: 1px solid #eef1ea;
+  font-size:.9rem;
+}
+
+main section ul li:first-child{
+  font-weight:700;
+  border-bottom: 2px solid #e2e8dc;
+}
+
+/* cores por faixa, na ordem em que aparecem no HTML */
+main section ul li:nth-child(2){ color:#2563eb; }              /* abaixo do peso */
+main section ul li:nth-child(3){ color:#16803c; }              /* peso normal */
+main section ul li:nth-child(4){ color:#c2410c; }              /* sobrepeso */
+main section ul li:nth-child(5){ color:#dc2626; }              /* obesidade grau 1 */
+main section ul li:nth-child(6){ color:#b91c1c; }              /* obesidade grau 2 */
+main section ul li:nth-child(7){ color:#7f1d1d; }              /* obesidade grau 3 */
+
+/* ============================================================
+   ROTINA.HTML — Ideias de Rotinas de Exercício
+   ============================================================ */
 
 .banner img{
-    position: absolute;
-    width: 300px;
-    height: 800px;
+  width:100%;
+  height:280px;
+  object-fit:cover;
 }
-
-.banner h1{
-    color: white;
-    font-size: 48px;
-    text-shadow: 2px 2px 5px black;
-}
-
 
 .cards{
-    background: #4c8b22;
-    color: white;
-    padding: 60px 10%;
-    text-align: center;
-}
-
-.cards h2{
-    font-size: 50px;
-    margin-bottom: 40px;
-}
-
-.cards .container{
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    flex-wrap: wrap;
-}
-
-.cards .card{
-    width: 220px;
-    background: #b5d98a;
-    color: black;
-    padding: 20px;
-    border-radius: 8px;
-    text-align: left;
-}
-
-.cards .card h3{
-    margin-bottom: 10px;
-}
-
-
-
-.beneficos{
-    background: #4c8b22;
-    color: white;
-    padding: 40px 10%;
-}
-
-.beneficos h2{
-    margin-bottom: 20px;
-    font-size: 35px;
-}
-
-.beneficos ul{
-    margin-left: 25px;
-}
-
-.beneficos li{
-    margin-bottom: 15px;
-    line-height: 1.6;
-}
-
-
-
-.rodape{
-    background: white;
-    padding: 40px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    border-radius: 30px 30px 0 0;
-}
-
-.rodape div{
-    margin: 10px;
-}
-
-.rodape h3{
-    margin-bottom: 10px;
-}
-
-
-/* Pagina 3 */
-
-
-.banner img{
-    width: 100%;
-    height: 450px;
-    object-fit: cover;
-    display: block;
-}
-
-
-
-.cards{
-    background: #3d7e1f;
-    padding: 20px 0 50px;
+  background: var(--verde-escuro);
+  color: var(--texto-claro);
+  padding: 32px;
 }
 
 .cards h1{
-    text-align: center;
-    color: white;
-    font-size: 50px;
-    font-weight: normal;
-    margin-bottom: 35px;
+  margin:0 0 20px;
+  font-size:1.8rem;
 }
-
-
 
 .container-cards{
-    width: 90%;
-    margin: auto;
-
-    display: flex;
-    justify-content: center;
-    gap: 45px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
 }
 
-.card-rotina{
-    width: 280px;
-    background: #dddddd;
-    border-radius: 6px;
-    padding: 15px;
+/* cartões da rotina: <div class="card"><h2>..</h2><ul><li>✔ ..</li></ul></div>
+   usam a mesma base visual de .card acima, só o cabeçalho muda de h3 pra h2 */
+.container-cards .card h2,
+.extras .card-pequeno h2{
+  margin:0;
+  background: var(--verde-medio);
+  color:#fff;
+  text-align:center;
+  padding: 10px;
+  font-size: 1rem;
 }
 
-.card-rotina h2{
-    font-size: 38px;
-    font-weight: normal;
-    color: #333;
-    margin-bottom: 15px;
+.container-cards .card ul,
+.extras .card-pequeno ul{
+  list-style:none;
+  padding: 14px 16px;
 }
 
-.card-rotina ul{
-    list-style: none;
+.container-cards .card ul li,
+.extras .card-pequeno ul li{
+  font-size:.88rem;
+  margin-bottom:8px;
+  color: var(--texto-escuro);
 }
-
-.card-rotina li{
-    font-size: 15px;
-    margin-bottom: 12px;
-    color: #444;
-}
-
-
 
 .extras{
-    width: 90%;
-    margin: 40px auto 0;
-
-    display: flex;
-    justify-content: center;
-    gap: 45px;
+  background: var(--verde-escuro);
+  padding: 0 32px 40px;
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
 }
 
 .card-pequeno{
-    width: 440px;
-    background: #dddddd;
-    border-radius: 6px;
-    padding: 15px;
+  background: var(--verde-claro);
+  border-radius: var(--raio);
+  overflow:hidden;
+  box-shadow: var(--sombra);
 }
 
-.card-pequeno h2{
-    font-size: 34px;
-    font-weight: normal;
-    color: #333;
-    margin-bottom: 15px;
-}
+/* ---------------------------------------------------------------
+   RESPONSIVO
+--------------------------------------------------------------- */
 
-.card-pequeno ul{
-    list-style: none;
-}
-
-.card-pequeno li{
-    font-size: 15px;
-    margin-bottom: 12px;
-    color: #444;
-}
-
-
-@media(max-width:1100px){
-
-    .container-cards{
-        flex-wrap: wrap;
-    }
-
-    .extras{
-        flex-wrap: wrap;
-    }
-
-}
-
-@media(max-width:768px){
-
-    .banner img{
-        height: 250px;
-    }
-
-    .cards h1{
-        font-size: 35px;
-    }
-
-    .container-cards{
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .extras{
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .card-rotina,
-    .card-pequeno{
-        width: 90%;
-    }
-
-    .card-rotina h2,
-    .card-pequeno h2{
-        font-size: 28px;
-    }
-
+@media (max-width: 720px){
+  header.menu{ flex-direction:column; gap:12px; }
+  nav ul{ gap:16px; }
+  nav > a{ margin-left:16px; }
+  main{ padding: 0 18px 32px; }
+  main > img:first-of-type{ width: calc(100% + 36px); margin: 0 -18px 20px; height:200px; }
+  .container-cards,
+  .extras{ grid-template-columns: 1fr; }
+  .cards, .extras{ padding-left:18px; padding-right:18px; }
+  footer{ flex-direction:column; gap:24px; }
 }
