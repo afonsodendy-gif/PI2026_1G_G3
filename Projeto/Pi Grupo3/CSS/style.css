@@ -142,7 +142,7 @@ main{
 
 main > img:first-of-type{
   width:100%;
-  height: clamp(280px, 30vw, 340px);
+  height: clamp(530px, 30vw, 340px);
   object-position: center;
 }
 
@@ -324,7 +324,7 @@ main section ul li:nth-child(7){ color:#7f1d1d; }
 
 .banner img{
   width:100%;
-  height: clamp(280px, 30vw, 340px);
+  height: clamp(530px, 30vw, 340px);
   object-position: center;
 }
 
