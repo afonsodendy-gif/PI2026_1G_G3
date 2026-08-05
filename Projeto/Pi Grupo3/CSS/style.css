@@ -141,11 +141,9 @@ main{
 
 
 main > img:first-of-type{
-  flex: 1 1 100%;
-  width: calc(100% + 64px);
-  margin: 0 -32px 24px;
-  height: 280px;
-  object-fit: cover;
+  width:100%;
+  height: clamp(280px, 30vw, 340px);
+  object-position: center;
 }
 
 main > h1{
@@ -326,8 +324,8 @@ main section ul li:nth-child(7){ color:#7f1d1d; }
 
 .banner img{
   width:100%;
-  height:280px;
-  object-fit:cover;
+  height: clamp(280px, 30vw, 340px);
+  object-position: center;
 }
 
 .cards{
