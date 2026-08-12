@@ -1,135 +1,225 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saúde Sempre</title>
-    <link rel="stylesheet" href="../CSS/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saúde Sempre | Rotinas de Exercícios</title>
+  <link rel="stylesheet" href="../CSS/style.css">
 </head>
-<body>
+<body class="page-rotina">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-        <header class="menu">
+  <header class="menu">
+    <div class="menu-inner">
+      <a class="logo" href="index.html" aria-label="Ir para a página inicial">
+        <img src="../Imagens/logo.png" alt="" aria-hidden="true">
+        <span class="brand-text">
+          <strong>Saúde Sempre</strong>
+          <span>Movimento, hábitos e bem-estar</span>
+        </span>
+      </a>
 
-        <div class="logo">
-            <img src="../Imagens/logo.png" alt="Logo Saúde Sempre">
-        </div>
-
-            <nav>
-                <ul>
-                    <li><a href="index.html">Inicial</a></li>
-                    <li><a href="imc.html">Calcular IMC</a></li>
-                    <li><a href="rotina.html">Rotinas de Exercícios</a></li>
-                </ul>
-            </nav>
-
-        </header>
-
-
-    <div class="banner">
-        <img src="../Imagens/Crianças se Exercitando.jpg" alt="Banner">
+      <nav aria-label="Menu principal">
+        <ul>
+          <li><a href="index.html">Inicial</a></li>
+          <li><a href="imc.html">Calcular IMC</a></li>
+          <li><a href="rotina.html" aria-current="page">Rotinas de Exercícios</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
 
-
-   
-
-    <div class="cards">
-
-            <h1>Ideias de Rotinas de Exercício</h1>
-
-            <div class="container-cards">
-
-            <div class="card">
-                <h2>Iniciante</h2>
-
-                <ul>
-                    <li>✔ Caminhada leve</li>
-                    <li>✔ Polichinelo leve</li>
-                    <li>✔ Agachamento sem peso</li>
-                    <li>✔ Alongamento de pernas e braços</li>
-                    <li>✔ Elevação de joelhos no lugar</li>
-                </ul>
-
-                </div>
-
-            <div class="card">
-                <h2>Intermediário</h2>
-
-                <ul>
-                    <li>✔ Corrida leve</li>
-                    <li>✔ Agachamento</li>
-                    <li>✔ Flexão de braço</li>
-                    <li>✔ Abdominal tradicional</li>
-                    <li>✔ Prancha</li>
-                </ul>
-
-                </div>
-
-            <div class="card">
-                <h2>Avançado</h2>
-
-                <ul>
-                    <li>✔ Corrida contínua</li>
-                    <li>✔ Burpee</li>
-                    <li>✔ Agachamento com salto</li>
-                    <li>✔ Flexão de braço explosiva</li>
-                    <li>✔ Prancha com variação</li>
-                </ul>
-
-                </div>
-
-            </div>
-
-    </div>
-
-
-        <div class="extras">
-
-        <div class="card-pequeno">
-            <h2>Ideias de aquecimento</h2>
-
-            <ul>
-                <li>✔ Caminhada ou corrida leve no lugar</li>
-                <li>✔ Polichinelo</li>
-                <li>✔ Rotação de articulações</li>
-            </ul>
-
+  <main id="conteudo">
+    <section class="hero container">
+      <div class="hero-copy">
+        <p class="eyebrow">Rotinas por nível</p>
+        <h1>Ideias de exercícios para começar, evoluir e manter constância</h1>
+        <p>
+          O objetivo desta página é deixar a prática mais clara, organizada e fácil de seguir. Cada nível traz exemplos simples e seguros para o dia a dia.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="imc.html">Calcular IMC</a>
+          <a class="btn btn-secondary" href="index.html">Voltar à home</a>
         </div>
+      </div>
 
-        <div class="card-pequeno">
-            <h2>Dicas Importantes</h2>
-
-            <ul>
-                <li>✔ Faça aquecimento antes dos exercícios</li>
-                <li>✔ Mantenha regularidade</li>
-                <li>✔ Hidrate-se e respeite seus limites</li>
-            </ul>
-
-            </div>
-
-        </div>
-
+      <figure class="hero-media">
+        <img src="../Imagens/Crianças se Exercitando.jpg" alt="Grupo de crianças realizando atividades físicas ao ar livre">
+        <figcaption class="hero-caption">A rotina fica mais fácil de manter quando o treino tem objetivo, duração e pausas bem definidas.</figcaption>
+      </figure>
     </section>
 
+    <section class="section container">
+      <div class="section-head">
+        <p class="eyebrow">Sugestões práticas</p>
+        <h2>Rotinas de exercícios por nível</h2>
+        <p class="section-intro">As propostas abaixo servem como base para criar uma semana mais ativa sem complicar demais.</p>
+      </div>
 
+      <div class="routine-grid">
+        <article class="routine-card">
+          <h3>Iniciante</h3>
+          <div class="meta">
+            <span class="pill">15 a 20 min</span>
+            <span class="pill">Ritmo leve</span>
+            <span class="pill">Segurança</span>
+          </div>
+          <p>Ideal para quem está começando ou quer sair do sedentarismo aos poucos.</p>
+          <ul class="exercise-list">
+            <li>Caminhada leve</li>
+            <li>Polichinelo em baixa intensidade</li>
+            <li>Agachamento sem peso</li>
+            <li>Elevação de joelhos no lugar</li>
+            <li>Alongamento de braços e pernas</li>
+          </ul>
+        </article>
 
-    <footer>
-        <section>
-            <h4>Seções</h4>
-            <a href="index.html">Inicial</a><br>
-            <a href="imc.html">Calcular IMC</a><br>
-            <a href="rotina.html">Rotinas de Exercícios</a>
-        </section>
+        <article class="routine-card">
+          <h3>Intermediário</h3>
+          <div class="meta">
+            <span class="pill">20 a 30 min</span>
+            <span class="pill">Ritmo moderado</span>
+            <span class="pill">Resistência</span>
+          </div>
+          <p>Boa opção para quem já consegue manter uma rotina regular de movimento.</p>
+          <ul class="exercise-list">
+            <li>Corrida leve ou caminhada rápida</li>
+            <li>Agachamento</li>
+            <li>Flexão de braço adaptada</li>
+            <li>Abdominal tradicional</li>
+            <li>Prancha</li>
+          </ul>
+        </article>
 
-        <section>
-            <h4>Contato</h4>
-            <a href="https://www.instagram.com/saudesempre._org?igsh=eHY0ZGszZ3N0OWl5"><img src="../Imagens/instagram.avif" alt="Instagram"></a>
-            <p>@SaudeSempre._org</p>
-            <a href="http://tiktok.com/@saudesempre.org"><img src="../Imagens/tiktok.avif" alt="TikTok"></a>
-            <p>@saudesempre.org</p>
-            <a href="https://www.facebook.com/share/1BQ52WZr9w/"><img src="../Imagens/facebook.jfif" alt="Facebook"></a>
-            <p>Afonso Ronaldo</p>
-        </section>
-    </footer>
+        <article class="routine-card">
+          <h3>Avançado</h3>
+          <div class="meta">
+            <span class="pill">30 a 40 min</span>
+            <span class="pill">Ritmo alto</span>
+            <span class="pill">Desafio</span>
+          </div>
+          <p>Para quem já tem hábito de exercício e quer aumentar intensidade com responsabilidade.</p>
+          <ul class="exercise-list">
+            <li>Corrida contínua</li>
+            <li>Burpee</li>
+            <li>Agachamento com salto</li>
+            <li>Flexão com variação</li>
+            <li>Prancha com apoio alternado</li>
+          </ul>
+        </article>
+      </div>
+    </section>
 
-    </body>
-    </html>
+    <section class="section container">
+      <div class="section-head">
+        <p class="eyebrow">Organização da semana</p>
+        <h2>Rotina semanal sugerida</h2>
+      </div>
+
+      <div class="schedule-grid">
+        <article class="day-card"><strong>Segunda</strong><span>Iniciante, caminhada + alongamento</span></article>
+        <article class="day-card"><strong>Terça</strong><span>Intermediário, exercícios de força</span></article>
+        <article class="day-card"><strong>Quarta</strong><span>Pausas ativas e mobilidade</span></article>
+        <article class="day-card"><strong>Quinta</strong><span>Iniciante ou intermediário, cardio leve</span></article>
+        <article class="day-card"><strong>Sexta</strong><span>Treino misto com agachamentos e prancha</span></article>
+        <article class="day-card"><strong>Sábado</strong><span>Brincadeira ao ar livre ou esporte</span></article>
+        <article class="day-card"><strong>Domingo</strong><span>Descanso, alongamento leve e recuperação</span></article>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="grid-2">
+        <article class="soft-card">
+          <h3>Aquecimento</h3>
+          <p>Antes dos exercícios, comece com movimentos leves para preparar o corpo e reduzir o risco de desconforto.</p>
+          <ul class="bullet-list">
+            <li>Caminhada ou corrida leve no lugar</li>
+            <li>Polichinelos em ritmo baixo</li>
+            <li>Rotação de ombros, quadril e tornozelos</li>
+          </ul>
+        </article>
+
+        <article class="soft-card">
+          <h3>Alongamento e pausas ativas</h3>
+          <p>Depois do treino, alongue o corpo com calma. Durante estudos ou uso de telas, levante-se por alguns minutos.</p>
+          <ul class="bullet-list">
+            <li>Alongue pernas, braços e costas</li>
+            <li>Beba água entre as pausas</li>
+            <li>Levante a cada intervalo para sair da imobilidade</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="callout">
+        <h2>Treinar bem é treinar com equilíbrio</h2>
+        <p>
+          Respeitar os limites, manter regularidade e escolher atividades adequadas à idade e ao condicionamento tornam a experiência mais segura e mais fácil de manter.
+        </p>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-head">
+        <p class="eyebrow">Cuidados</p>
+        <h2>Recomendações simples para melhorar o resultado</h2>
+      </div>
+
+      <div class="grid-3">
+        <article class="feature-card">
+          <h3>Hidratação</h3>
+          <p>Beba água antes, durante e depois das atividades para manter o corpo funcionando melhor.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Postura</h3>
+          <p>Execute os movimentos com atenção à postura para aproveitar melhor o exercício e evitar exageros.</p>
+        </article>
+        <article class="feature-card">
+          <h3>Regularidade</h3>
+          <p>Mais importante do que fazer tudo de uma vez é manter uma rotina possível de repetir.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <section class="footer-block">
+        <h4>Seções</h4>
+        <div class="footer-links">
+          <a href="index.html">Inicial</a>
+          <a href="imc.html">Calcular IMC</a>
+          <a href="rotina.html">Rotinas de Exercícios</a>
+        </div>
+      </section>
+
+      <section class="footer-block">
+        <h4>Contato</h4>
+        <p class="small">Acompanhe os canais do projeto:</p>
+        <div class="socials">
+          <a class="social-link" href="https://www.instagram.com/saudesempre._org?igsh=eHY0ZGszZ3N0OWl5" aria-label="Instagram do projeto">
+            <img src="../Imagens/instagram.avif" alt="" aria-hidden="true">
+            <span>@SaudeSempre._org</span>
+          </a>
+          <a class="social-link" href="http://tiktok.com/@saudesempre.org" aria-label="TikTok do projeto">
+            <img src="../Imagens/tiktok.avif" alt="" aria-hidden="true">
+            <span>@saudesempre.org</span>
+          </a>
+          <a class="social-link" href="https://www.facebook.com/share/1BQ52WZr9w/" aria-label="Facebook do projeto">
+            <img src="../Imagens/facebook.jfif" alt="" aria-hidden="true">
+            <span>Facebook</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="footer-block">
+        <h4>Observação</h4>
+        <p class="small">
+          Rotinas pensadas para um projeto educativo, com organização visual e orientações simples.
+        </p>
+      </section>
+    </div>
+  </footer>
+</body>
+</html>

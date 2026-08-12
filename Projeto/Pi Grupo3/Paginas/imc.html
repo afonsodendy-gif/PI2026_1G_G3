@@ -1,98 +1,168 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/style.css">
-    <title>Saúde Sempre</title>
-
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saúde Sempre | Calculadora de IMC</title>
+  <link rel="stylesheet" href="../CSS/style.css">
 </head>
-<body>
-        <header class="menu">
+<body class="page-imc">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
-            <div class="logo">
-                <img src="../Imagens/logo.png" alt="Logo Saúde Sempre">
-            </div>
+  <header class="menu">
+    <div class="menu-inner">
+      <a class="logo" href="index.html" aria-label="Ir para a página inicial">
+        <img src="../Imagens/logo.png" alt="" aria-hidden="true">
+        <span class="brand-text">
+          <strong>Saúde Sempre</strong>
+          <span>Movimento, hábitos e bem-estar</span>
+        </span>
+      </a>
 
-            <nav>
-                <ul>
-                    <li><a href="index.html">Inicial</a></li>
-                    <li><a href="imc.html">Calcular IMC</a></li>
-                    <li><a href="rotina.html">Rotinas de Exercícios</a></li>
-                </ul>
-            </nav>
+      <nav aria-label="Menu principal">
+        <ul>
+          <li><a href="index.html">Inicial</a></li>
+          <li><a href="imc.html" aria-current="page">Calcular IMC</a></li>
+          <li><a href="rotina.html">Rotinas de Exercícios</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-        </header>
-    <main>
+  <main id="conteudo">
+    <section class="container">
+      <div class="section-head">
+        <p class="eyebrow">Ferramenta prática</p>
+        <h1 class="page-title">Calculadora de IMC</h1>
+        <p class="page-intro">
+          O IMC ajuda a comparar peso e altura de forma simples. Aqui, o resultado aparece com classificação clara, explicação curta e apresentação visual mais amigável.
+        </p>
+      </div>
+    </section>
 
-        <h2>Calculadora de IMC</h2>
-        <p>IMC (Índice de Massa Corporal) é uma medida usada para avaliar se uma pessoa está com o peso adequado em relação à sua altura.</p>
-        <hr>
+    <section class="container imc-layout">
+      <article class="panel form-card">
+        <h2>Preencha os dados</h2>
+        <p class="intro">
+          Digite o peso em quilogramas e a altura em centímetros. O sistema valida os campos e mostra uma interpretação objetiva.
+        </p>
 
-        
-        <form id="imcForm">
-            <div>
-                <label for="peso"><strong>Peso (KG)</strong></label>
-                <input type="number" id="peso" name="peso" placeholder="Ex: 89" step="0.1" min="1" required>
-            </div>
-<br>
-            <div>
-                <label for="altura"><strong>Altura (CM)</strong></label>
-                <input type="number" id="altura" name="altura" placeholder="Exemplo: 175" step="0.1" min="1" required>
-            </div>
+        <form id="imcForm" class="imc-form" novalidate>
+          <div class="field">
+            <label for="peso">Peso (kg)</label>
+            <input type="number" id="peso" name="peso" placeholder="Ex.: 52,5" step="0.1" min="1" inputmode="decimal" aria-describedby="pesoErro">
+            <small class="help-text">Use apenas números. Você pode usar vírgula ou ponto.</small>
+            <span id="pesoErro" class="field-error" aria-live="polite"></span>
+          </div>
 
-            <br>
-            <button type="submit">Calcular IMC</button>
+          <div class="field">
+            <label for="altura">Altura (cm)</label>
+            <input type="number" id="altura" name="altura" placeholder="Ex.: 175" step="0.1" min="1" inputmode="decimal" aria-describedby="alturaErro">
+            <small class="help-text">Digite a altura em centímetros, por exemplo 175 para 1,75 m.</small>
+            <span id="alturaErro" class="field-error" aria-live="polite"></span>
+          </div>
+
+          <div class="form-actions">
+            <button class="primary" type="submit">Calcular IMC</button>
+            <button class="secondary" type="reset" id="limparBtn">Limpar</button>
+          </div>
         </form>
+      </article>
 
-<br><hr><br>
+      <aside id="resultCard" class="panel result-card" data-state="" aria-live="polite" role="status">
+        <h2>Resultado</h2>
+        <p class="small">O retorno aparece aqui depois do cálculo.</p>
 
-        <section id="res">
-            <h3>Seu IMC:</h3>
-            <p id="valorIMC">—</p>
-            <p id="classIMC">Aguardando cálculo...</p>
-        </section>
+        <div class="result-box">
+          <p class="small">Seu IMC</p>
+          <p id="valorIMC" class="result-value">—</p>
+          <p id="classIMC" class="result-badge">Preencha os dados para ver a classificação.</p>
+          <p id="descricaoIMC" class="result-description">Use o formulário para calcular o IMC e ver a interpretação.</p>
+        </div>
 
-<br><hr><br>
+        <div class="note-box" style="margin-top:1rem;">
+          <p class="small">
+            O IMC é uma referência geral. Em crianças e adolescentes, a interpretação costuma seguir critérios específicos de idade e crescimento.
+          </p>
+        </div>
+      </aside>
+    </section>
 
-        <section>
-            <h3>Classificação IMC</h3>
-            <ul>
-                <li><strong>Faixa de IMC</strong></li>
-                <li>Abaixo de 18,5 — <strong>Abaixo do peso</strong></li>
-                <li>18,5 a 24,9 — <strong>Peso normal</strong></li>
-                <li>25 a 29,9 — <strong>Sobrepeso</strong></li>
-                <li>30 a 34,9 — <strong>Obesidade Grau 1</strong></li>
-                <li>35 a 39,9 — <strong>Obesidade Grau 2</strong></li>
-                <li>Acima de 40 — <strong>Obesidade Grau 3</strong></li>
-            </ul>
-        </section>
+    <section class="container section">
+      <div class="grid-2">
+        <article class="legend-card panel">
+          <h2>Classificação IMC</h2>
+          <p class="section-intro">A lista abaixo mostra as faixas usadas neste exemplo.</p>
+          <div class="legend-grid">
+            <div class="legend-item" data-faixa="baixo"><strong>Abaixo do peso</strong><span>Menor que 18,5</span></div>
+            <div class="legend-item" data-faixa="normal"><strong>Peso normal</strong><span>18,5 a 24,9</span></div>
+            <div class="legend-item" data-faixa="sobrepeso"><strong>Sobrepeso</strong><span>25 a 29,9</span></div>
+            <div class="legend-item" data-faixa="obesidade1"><strong>Obesidade grau 1</strong><span>30 a 34,9</span></div>
+            <div class="legend-item" data-faixa="obesidade2"><strong>Obesidade grau 2</strong><span>35 a 39,9</span></div>
+            <div class="legend-item" data-faixa="obesidade3"><strong>Obesidade grau 3</strong><span>40 ou mais</span></div>
+          </div>
+        </article>
 
-        <hr>
+        <article class="panel">
+          <h2>Como usar o resultado</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>1. Calcule</strong>
+              <span>Insira peso e altura com atenção para evitar valores inválidos.</span>
+            </div>
+            <div class="timeline-item">
+              <strong>2. Leia a faixa</strong>
+              <span>Veja a classificação e a cor de destaque para localizar o resultado mais rápido.</span>
+            </div>
+            <div class="timeline-item">
+              <strong>3. Interprete com contexto</strong>
+              <span>O IMC é um ponto de partida. Hábitos, idade e rotina também importam.</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
 
-    </main>
+  <footer>
+    <div class="footer-inner">
+      <section class="footer-block">
+        <h4>Seções</h4>
+        <div class="footer-links">
+          <a href="index.html">Inicial</a>
+          <a href="imc.html">Calcular IMC</a>
+          <a href="rotina.html">Rotinas de Exercícios</a>
+        </div>
+      </section>
 
+      <section class="footer-block">
+        <h4>Contato</h4>
+        <p class="small">Acompanhe os canais do projeto:</p>
+        <div class="socials">
+          <a class="social-link" href="https://www.instagram.com/saudesempre._org?igsh=eHY0ZGszZ3N0OWl5" aria-label="Instagram do projeto">
+            <img src="../Imagens/instagram.avif" alt="" aria-hidden="true">
+            <span>@SaudeSempre._org</span>
+          </a>
+          <a class="social-link" href="http://tiktok.com/@saudesempre.org" aria-label="TikTok do projeto">
+            <img src="../Imagens/tiktok.avif" alt="" aria-hidden="true">
+            <span>@saudesempre.org</span>
+          </a>
+          <a class="social-link" href="https://www.facebook.com/share/1BQ52WZr9w/" aria-label="Facebook do projeto">
+            <img src="../Imagens/facebook.jfif" alt="" aria-hidden="true">
+            <span>Facebook</span>
+          </a>
+        </div>
+      </section>
 
-    <footer>
-        <section>
-            <h4>Seções</h4>
-            <a href="index.html">Inicial</a><br>
-            <a href="imc.html">Calcular IMC</a><br>
-            <a href="rotina.html">Rotinas de Exercícios</a>
-        </section>
+      <section class="footer-block">
+        <h4>Observação</h4>
+        <p class="small">
+          Ferramenta educativa com foco em clareza, validação e melhor experiência de uso.
+        </p>
+      </section>
+    </div>
+  </footer>
 
-        <section>
-            <h4>Contato</h4>
-            <a href="https://www.instagram.com/saudesempre._org?igsh=eHY0ZGszZ3N0OWl5"><img src="../Imagens/instagram.avif" alt="Instagram"></a>
-            <p>@SaudeSempre._org</p>
-            <a href="http://tiktok.com/@saudesempre.org"><img src="../Imagens/tiktok.avif" alt="TikTok"></a>
-            <p>@saudesempre.org</p>
-            <a href="https://www.facebook.com/share/1BQ52WZr9w/"><img src="../Imagens/facebook.jfif" alt="Facebook"></a>
-            <p>Afonso Ronaldo</p>
-        </section>
-    </footer>
-
-<script src="../JS/script.js"></script>
+  <script src="../JS/script.js"></script>
 </body>
-</html> 
+</html>
