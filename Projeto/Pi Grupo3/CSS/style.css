@@ -6,6 +6,7 @@
   --verde-500:#7bc142;
   --verde-100:#eaf4e4;
   --verde-50:#f6fbf3;
+  --vermelho-999:#e00b0b;
   --texto:#243324;
   --texto-suave:#5f6b58;
   --branco:#ffffff;
@@ -469,6 +470,10 @@ main{
   gap:.7rem;
 }
 
+.good-list{
+  display:grid;
+  gap:.7rem;
+}
 .risk-list li{
   display:flex;
   gap:.65rem;
@@ -482,10 +487,25 @@ main{
   flex:0 0 .75rem;
   margin-top:.35rem;
   border-radius:50%;
+  background:var(--vermelho-999);
+  box-shadow:0 0 0 4px rgba(123,193,66,.16);
+}
+.good-list li{
+  display:flex;
+  gap:.65rem;
+  align-items:flex-start;
+  color:var(--texto-suave);
+}
+.good-list li::before{
+  content:"";
+  width:.75rem;
+  height:.75rem;
+  flex:0 0 .75rem;
+  margin-top:.35rem;
+  border-radius:50%;
   background:var(--verde-500);
   box-shadow:0 0 0 4px rgba(123,193,66,.16);
 }
-
 .routine-grid{
   display:grid;
   grid-template-columns:repeat(3, minmax(0, 1fr));
