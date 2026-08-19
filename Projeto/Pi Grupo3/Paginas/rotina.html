@@ -56,8 +56,28 @@
         <p class="section-intro">As propostas abaixo servem como base para criar uma semana mais ativa sem complicar demais.</p>
       </div>
 
+      <div class="activity-question">
+        <label for="horasAtividade">
+          Quantas horas por semana você pratica atividade física?
+        </label>
+      <input
+        type="number"
+        id="horasAtividade"
+        min="0"
+        max="40"
+        step="0.5"
+        placeholder="Ex: 4"
+      >
+      <p id="recomendacaoAtividade" aria-live="polite">
+        Digite uma quantidade de horas para receber uma sugestão de rotina.
+      </p>
+      <small>
+        Essa sugestão é apenas uma referência. Intensidade, experiência e condicionamento também devem ser considerados.
+      </small>
+    </div>
+
       <div class="routine-grid">
-        <article class="routine-card">
+        <article class="routine-card" data-nivel="iniciante">
           <h3>Iniciante</h3>
           <div class="meta">
             <span class="pill">15 a 20 min</span>
@@ -74,7 +94,7 @@
           </ul>
         </article>
 
-        <article class="routine-card">
+        <article class="routine-card" data-nivel="intermediario">
           <h3>Intermediário</h3>
           <div class="meta">
             <span class="pill">20 a 30 min</span>
@@ -91,7 +111,7 @@
           </ul>
         </article>
 
-        <article class="routine-card">
+        <article class="routine-card" data-nivel="avancado">
           <h3>Avançado</h3>
           <div class="meta">
             <span class="pill">30 a 40 min</span>
@@ -221,5 +241,6 @@
       </section>
     </div>
   </footer>
+  <script src="../JS/script.js"></script>
 </body>
 </html>

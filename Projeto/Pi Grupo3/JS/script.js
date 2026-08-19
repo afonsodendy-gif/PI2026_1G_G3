@@ -188,3 +188,72 @@ document.addEventListener('DOMContentLoaded', () => {
 
   resetResult(true);
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+  const horasInput = document.getElementById('horasAtividade');
+  const recomendacao = document.getElementById('recomendacaoAtividade');
+  const cards = document.querySelectorAll('.routine-card');
+
+  if (!horasInput || !recomendacao) return;
+
+  function limparDestaque() {
+    cards.forEach((card) => {
+      card.style.border = '';
+      card.style.boxShadow = '';
+      card.style.transform = '';
+    });
+  }
+
+  function destacarCard(nivel) {
+    limparDestaque();
+
+    const card = document.querySelector(`[data-nivel="${nivel}"]`);
+
+    if (card) {
+      card.style.border = '2px solid var(--verde-500)';
+      card.style.boxShadow = '0 8px 24px rgba(74, 125, 35, 0.18)';
+      card.style.transform = 'translateY(-4px)';
+    }
+  }
+
+  horasInput.addEventListener('input', () => {
+    const horas = Number(horasInput.value);
+
+    if (horasInput.value === '') {
+      recomendacao.textContent =
+        'Digite uma quantidade de horas para receber uma sugestão de rotina.';
+
+      limparDestaque();
+      return;
+    }
+
+    if (horas < 0 || horas > 40) {
+      recomendacao.textContent =
+        'Informe uma quantidade de horas válida.';
+
+      limparDestaque();
+      return;
+    }
+
+    if (horas <= 2) {
+      recomendacao.textContent =
+        'Pelo seu tempo de atividade, a rotina iniciante pode ser uma boa opção para começar.';
+
+      destacarCard('iniciante');
+    }
+
+    else if (horas <= 5) {
+      recomendacao.textContent =
+        'Você já pratica atividade física com alguma frequência. A rotina intermediária pode ser uma boa opção.';
+
+      destacarCard('intermediario');
+    }
+
+    else {
+      recomendacao.textContent =
+        'Você já dedica bastante tempo à atividade física. A rotina avançada pode servir como referência, respeitando seu condicionamento e descanso.';
+
+      destacarCard('avancado');
+    }
+  });
+});
