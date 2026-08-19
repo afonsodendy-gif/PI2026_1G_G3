@@ -446,10 +446,27 @@ main{
   gap:1rem;
 }
 
-.risk-grid{
+.risk-row{
   display:grid;
-  grid-template-columns:1.15fr .85fr;
+  grid-template-columns:1fr 1fr;
   gap:1rem;
+  margin-bottom:1rem;
+  align-items:stretch;
+}
+
+.risk-image{
+  overflow:hidden;
+  border-radius:var(--raio);
+  border:1px solid var(--linha);
+  box-shadow:var(--sombra-suave);
+  background:var(--branco);
+}
+
+.risk-image img{
+  width:100%;
+  height:100%;
+  min-height:260px;
+  object-fit:cover;
 }
 
 .risk-box{
@@ -901,6 +918,14 @@ footer{
     flex-direction:column;
     align-items:flex-start;
     padding:.9rem 0 1rem;
+  }
+
+    .risk-row{
+    grid-template-columns:1fr;
+  }
+
+  .risk-image img{
+    min-height:220px;
   }
 
   nav ul{
