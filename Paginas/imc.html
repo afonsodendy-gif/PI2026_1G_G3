@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saúde Sempre | Calculadora de IMC</title>
-  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="page-imc">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -12,7 +12,7 @@
   <header class="menu">
     <div class="menu-inner">
       <a class="logo" href="../index.html" aria-label="Ir para a página inicial">
-        <img src="../Imagens/logo.png" alt="" aria-hidden="true">
+        <img src="../imagens/logo.png" alt="" aria-hidden="true">
         <span class="brand-text">
           <strong>Saúde Sempre</strong>
           <span>Movimento, hábitos e bem-estar</span>
@@ -35,7 +35,7 @@
         <p class="eyebrow">Ferramenta prática</p>
         <h1 class="page-title">Calculadora de IMC</h1>
         <p class="page-intro">
-          O IMC ajuda a comparar peso e altura de forma simples. Aqui, o resultado aparece com classificação clara, explicação curta e apresentação visual mais amigável.
+          Calcule o IMC e veja o resultado junto dos seus hábitos de movimento e de tela. Para crianças e adolescentes, o número isolado não define uma categoria de peso.
         </p>
       </div>
     </section>
@@ -44,27 +44,44 @@
       <article class="panel form-card">
         <h2>Preencha os dados</h2>
         <p class="intro">
-          Digite o peso em quilogramas e a altura em centímetros. O sistema valida os campos e mostra uma interpretação objetiva.
+          Informe os dados para obter uma orientação educativa. Os dados ficam apenas nesta página e não são enviados ou salvos.
         </p>
 
         <form id="imcForm" class="imc-form" novalidate>
           <div class="field">
             <label for="peso">Peso (kg)</label>
-            <input type="number" id="peso" name="peso" placeholder="Ex.: 52,5" step="0.1" min="1" inputmode="decimal" aria-describedby="pesoErro">
+            <input type="text" id="peso" name="peso" placeholder="Ex.: 52,5" inputmode="decimal" required aria-describedby="pesoErro">
             <small class="help-text">Use apenas números. Você pode usar vírgula ou ponto.</small>
             <span id="pesoErro" class="field-error" aria-live="polite"></span>
           </div>
 
           <div class="field">
             <label for="altura">Altura (cm)</label>
-            <input type="number" id="altura" name="altura" placeholder="Ex.: 175" step="0.1" min="1" inputmode="decimal" aria-describedby="alturaErro">
+            <input type="text" id="altura" name="altura" placeholder="Ex.: 160" inputmode="decimal" required aria-describedby="alturaErro">
             <small class="help-text">Digite a altura em centímetros, por exemplo 175 para 1,75 m.</small>
             <span id="alturaErro" class="field-error" aria-live="polite"></span>
           </div>
 
+          <div class="field">
+            <label for="idade">Idade (anos completos)</label>
+            <input type="number" id="idade" name="idade" placeholder="Ex.: 13" min="5" max="17" step="1" required aria-describedby="idadeErro">
+            <span id="idadeErro" class="field-error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="atividade">Atividade física por dia, em média (minutos)</label>
+            <input type="number" id="atividade" name="atividade" placeholder="Ex.: 25" min="0" max="300" step="1" required aria-describedby="atividadeErro">
+            <small class="help-text">Inclua brincadeiras, caminhadas, dança e esportes; use uma média da semana.</small>
+            <span id="atividadeErro" class="field-error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="tela">Tempo de tela para lazer por dia (horas)</label>
+            <input type="number" id="tela" name="tela" placeholder="Ex.: 3" min="0" max="24" step="0.5" required aria-describedby="telaErro">
+            <small class="help-text">Desconsidere aulas e tarefas escolares.</small>
+            <span id="telaErro" class="field-error" aria-live="polite"></span>
+          </div>
           <div class="form-actions">
             <button class="primary" type="submit">Calcular IMC</button>
-            <button class="secondary" type="reset" id="limparBtn">Limpar</button>
+            <button class="secondary" type="reset">Limpar</button>
           </div>
         </form>
       </article>
@@ -76,51 +93,36 @@
         <div class="result-box">
           <p class="small">Seu IMC</p>
           <p id="valorIMC" class="result-value">—</p>
-          <p id="classIMC" class="result-badge">Preencha os dados para ver a classificação.</p>
-          <p id="descricaoIMC" class="result-description">Use o formulário para calcular o IMC e ver a interpretação.</p>
+          <p id="classIMC" class="result-badge">Preencha os dados para ver a orientação.</p>
+          <p id="descricaoIMC" class="result-description">O resultado e as sugestões aparecem após o cálculo.</p>
         </div>
 
-        <div class="note-box" style="margin-top:1rem;">
-          <p class="small">
-            O IMC é uma referência geral. Em crianças e adolescentes, a interpretação costuma seguir critérios específicos de idade e crescimento.
-          </p>
+        <div class="note-box result-guidance">
+          <h3>Sugestão para sua rotina</h3>
+          <p id="orientacaoHabitos">Informe sua rotina para ver uma sugestão de atividade.</p>
+          <p id="orientacaoTela" class="note">Pausas e equilíbrio com as telas também contam.</p>
+          <a class="text-link" href="rotina.html">Ver ideias de atividades →</a>
         </div>
       </aside>
     </section>
 
     <section class="container section">
       <div class="grid-2">
-        <article class="legend-card panel">
-          <h2>Classificação IMC</h2>
-          <p class="section-intro">A lista abaixo mostra as faixas usadas neste exemplo.</p>
-          <div class="legend-grid">
-            <div class="legend-item" data-faixa="baixo"><strong>Abaixo do peso</strong><span>Menor que 18,5</span></div>
-            <div class="legend-item" data-faixa="normal"><strong>Peso normal</strong><span>18,5 a 24,9</span></div>
-            <div class="legend-item" data-faixa="sobrepeso"><strong>Sobrepeso</strong><span>25 a 29,9</span></div>
-            <div class="legend-item" data-faixa="obesidade1"><strong>Obesidade grau 1</strong><span>30 a 34,9</span></div>
-            <div class="legend-item" data-faixa="obesidade2"><strong>Obesidade grau 2</strong><span>35 a 39,9</span></div>
-            <div class="legend-item" data-faixa="obesidade3"><strong>Obesidade grau 3</strong><span>40 ou mais</span></div>
-          </div>
-        </article>
-
         <article class="panel">
-          <h2>Como usar o resultado</h2>
+          <h2>Por que não há classificação automática?</h2>
+          <p>Na fase de crescimento, o IMC deve ser avaliado com curvas de IMC por idade e sexo. Apenas peso, altura e idade não bastam para classificar a saúde de uma criança ou adolescente. Converse com um profissional de saúde junto de um responsável se precisar interpretar o resultado.</p>
+          <p class="note">O IMC também não revela por si só hábitos, condicionamento ou saúde.</p>
+        </article>
+        <article class="panel">
+          <h2>Como usar esta ferramenta</h2>
           <div class="timeline">
-            <div class="timeline-item">
-              <strong>1. Calcule</strong>
-              <span>Insira peso e altura com atenção para evitar valores inválidos.</span>
-            </div>
-            <div class="timeline-item">
-              <strong>2. Leia a faixa</strong>
-              <span>Veja a classificação e a cor de destaque para localizar o resultado mais rápido.</span>
-            </div>
-            <div class="timeline-item">
-              <strong>3. Interprete com contexto</strong>
-              <span>O IMC é um ponto de partida. Hábitos, idade e rotina também importam.</span>
-            </div>
+            <div class="timeline-item"><strong>1. Calcule</strong><span>Confira suas medidas e leia o valor numérico do IMC.</span></div>
+            <div class="timeline-item"><strong>2. Observe</strong><span>Compare suas respostas sobre atividade e telas com as sugestões de rotina.</span></div>
+            <div class="timeline-item"><strong>3. Converse</strong><span>Para avaliar crescimento, procure a equipe de saúde com um responsável.</span></div>
           </div>
         </article>
       </div>
+      <p class="note">Fontes: <a class="text-link" href="https://www.gov.br/saude/pt-br/composicao/saps/vigilancia-alimentar-e-nutricional/parametros-para-avaliacao-nutricional">Ministério da Saúde · curvas de crescimento</a> e <a class="text-link" href="https://www.who.int/europe/news-room/fact-sheets/item/physical-activity">OMS · atividade física</a>.</p>
     </section>
   </main>
 
@@ -147,20 +149,16 @@
             <img src="../Imagens/tiktok.avif" alt="" aria-hidden="true">
             <span>@saudesempre.org</span>
           </a>
-          <a class="social-link" href="https://www.facebook.com/share/1BQ52WZr9w/" aria-label="Facebook do projeto">
-            <img src="../Imagens/facebook.jfif" alt="" aria-hidden="true">
-            <span>Facebook</span>
-          </a>
         </div>
       </section>
 
       <section class="footer-block">
 
-        <img src="../Imagens/Logoifc.jpg" alt="Logo da instituição">
+        <img src="../imagens/Logoifc.jpg" alt="Logo da instituição">
       </section>
     </div>
   </footer>
 
-  <script src="../Js/script.js"></script>
+  <script src="../js/script.js"></script>
 </body>
 </html>

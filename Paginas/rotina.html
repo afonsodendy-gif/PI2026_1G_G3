@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saúde Sempre | Rotinas de Exercícios</title>
-  <link rel="stylesheet" href="../CSS/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="page-rotina">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -12,7 +12,7 @@
   <header class="menu">
     <div class="menu-inner">
       <a class="logo" href="../index.html" aria-label="Ir para a página inicial">
-        <img src="../Imagens/logo.png" alt="" aria-hidden="true">
+        <img src="../imagens/logo.png" alt="" aria-hidden="true">
         <span class="brand-text">
           <strong>Saúde Sempre</strong>
           <span>Movimento, hábitos e bem-estar</span>
@@ -44,7 +44,7 @@
       </div>
 
       <figure class="hero-media">
-        <img src="../Imagens/criancaexercicio.jpg" alt="Grupo de crianças realizando atividades físicas ao ar livre">
+        <img src="../imagens/criancaexercicio.jpg" alt="Grupo de crianças realizando atividades físicas ao ar livre">
         <figcaption class="hero-caption">A rotina fica mais fácil de manter quando o treino tem objetivo, duração e pausas bem definidas.</figcaption>
       </figure>
     </section>
@@ -57,22 +57,22 @@
       </div>
 
       <div class="activity-question">
-        <label for="horasAtividade">
-          Quantas horas por semana você pratica atividade física?
+        <label for="minutosAtividade">
+          Quantos minutos de atividade física você faz por dia, em média?
         </label>
       <input
         type="number"
-        id="horasAtividade"
+        id="minutosAtividade"
         min="0"
-        max="40"
-        step="0.5"
-        placeholder="Ex: 4"
+        max="300"
+        step="1"
+        placeholder="Ex.: 30"
       >
       <p id="recomendacaoAtividade" aria-live="polite">
-        Digite uma quantidade de horas para receber uma sugestão de rotina.
+        Digite os minutos para receber uma ideia de atividade.
       </p>
       <small>
-        Essa sugestão é apenas uma referência. Intensidade, experiência e condicionamento também devem ser considerados.
+        Para 5 a 17 anos, a OMS recomenda média de 60 minutos diários de atividade moderada a vigorosa ao longo da semana. Comece no seu ritmo e busque orientação se houver limitações.
       </small>
     </div>
 
@@ -87,9 +87,9 @@
           <p>Ideal para quem está começando ou quer sair do sedentarismo aos poucos.</p>
           <ul class="exercise-list">
             <li>Caminhada leve</li>
-            <li>Polichinelo em baixa intensidade</li>
-            <li>Agachamento sem peso</li>
-            <li>Elevação de joelhos no lugar</li>
+            <li>Dança ou brincadeira em ritmo leve</li>
+            <li>Subir escadas com calma</li>
+            <li>Jogo de bola sem competição</li>
             <li>Alongamento de braços e pernas</li>
           </ul>
         </article>
@@ -106,8 +106,8 @@
             <li>Corrida leve ou caminhada rápida</li>
             <li>Agachamento</li>
             <li>Flexão de braço adaptada</li>
-            <li>Abdominal tradicional</li>
-            <li>Prancha</li>
+            <li>Brincadeira de pega-pega</li>
+            <li>Pular corda no seu ritmo</li>
           </ul>
         </article>
 
@@ -118,13 +118,13 @@
             <span class="pill">Ritmo alto</span>
             <span class="pill">Desafio</span>
           </div>
-          <p>Para quem já tem hábito de exercício e quer aumentar intensidade com responsabilidade.</p>
+          <p>Para quem já tem experiência, gosta de desafios e pode combinar intensidade com descanso e supervisão adequada.</p>
           <ul class="exercise-list">
             <li>Corrida contínua</li>
-            <li>Burpee</li>
-            <li>Agachamento com salto</li>
-            <li>Flexão com variação</li>
-            <li>Prancha com apoio alternado</li>
+            <li>Esporte em grupo</li>
+            <li>Dança ou circuito de brincadeiras</li>
+            <li>Ciclismo com equipamentos adequados</li>
+            <li>Atividades variadas com pausas</li>
           </ul>
         </article>
       </div>
@@ -133,17 +133,17 @@
     <section class="section container">
       <div class="section-head">
         <p class="eyebrow">Organização da semana</p>
-        <h2>Rotina semanal sugerida</h2>
+        <h2>Exemplo flexível para a semana</h2>
       </div>
 
       <div class="schedule-grid">
         <article class="day-card"><strong>Segunda</strong><span>Iniciante, caminhada + alongamento</span></article>
-        <article class="day-card"><strong>Terça</strong><span>Intermediário, exercícios de força</span></article>
+        <article class="day-card"><strong>Terça</strong><span>Brincadeiras que fortalecem músculos e ossos</span></article>
         <article class="day-card"><strong>Quarta</strong><span>Pausas ativas e mobilidade</span></article>
-        <article class="day-card"><strong>Quinta</strong><span>Iniciante ou intermediário, cardio leve</span></article>
-        <article class="day-card"><strong>Sexta</strong><span>Treino misto com agachamentos e prancha</span></article>
+        <article class="day-card"><strong>Quinta</strong><span>Caminhada, dança ou bicicleta</span></article>
+        <article class="day-card"><strong>Sexta</strong><span>Jogo de bola ou brincadeiras ativas</span></article>
         <article class="day-card"><strong>Sábado</strong><span>Brincadeira ao ar livre ou esporte</span></article>
-        <article class="day-card"><strong>Domingo</strong><span>Descanso, alongamento leve e recuperação</span></article>
+        <article class="day-card"><strong>Domingo</strong><span>Passeio leve e tempo para recuperar</span></article>
       </div>
     </section>
 
@@ -226,18 +226,14 @@
             <img src="../Imagens/tiktok.avif" alt="" aria-hidden="true">
             <span>@saudesempre.org</span>
           </a>
-          <a class="social-link" href="https://www.facebook.com/share/1BQ52WZr9w/" aria-label="Facebook do projeto">
-            <img src="../Imagens/facebook.jfif" alt="" aria-hidden="true">
-            <span>Facebook</span>
-          </a>
         </div>
       </section>
 
       <section class="footer-block">
-        <img src="../Imagens/Logoifc.jpg" alt="Logo da instituição">
+        <img src="../imagens/Logoifc.jpg" alt="Logo da instituição">
       </section>
     </div>
   </footer>
-  <script src="../Js/script.js"></script>
+  <script src="../js/script.js"></script>
 </body>
 </html>

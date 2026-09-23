@@ -1,259 +1,104 @@
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('imcForm');
-  if (!form) return;
-
-  const pesoInput = document.getElementById('peso');
-  const alturaInput = document.getElementById('altura');
-  const resultadoValor = document.getElementById('valorIMC');
-  const resultadoClasse = document.getElementById('classIMC');
-  const resultadoDescricao = document.getElementById('descricaoIMC');
-  const resultCard = document.getElementById('resultCard');
-  const pesoErro = document.getElementById('pesoErro');
-  const alturaErro = document.getElementById('alturaErro');
-  const limparBtn = document.getElementById('limparBtn');
-  const faixaItens = Array.from(document.querySelectorAll('[data-faixa]'));
-
-  const faixaMap = [
-    {
-      limite: 18.5,
-      estado: 'baixo',
-      titulo: 'Abaixo do peso',
-      badge: 'Abaixo do peso',
-      descricao: 'O valor está abaixo da faixa de referência para adultos.'
-    },
-    {
-      limite: 24.9,
-      estado: 'normal',
-      titulo: 'Peso adequado',
-      badge: 'Peso normal',
-      descricao: 'O valor está na faixa considerada adequada para adultos.'
-    },
-    {
-      limite: 29.9,
-      estado: 'sobrepeso',
-      titulo: 'Sobrepeso',
-      badge: 'Sobrepeso',
-      descricao: 'Vale observar hábitos de alimentação, movimento e rotina.'
-    },
-    {
-      limite: 34.9,
-      estado: 'obesidade1',
-      titulo: 'Obesidade grau 1',
-      badge: 'Obesidade grau 1',
-      descricao: 'É um sinal importante para buscar acompanhamento e ajustes de hábitos.'
-    },
-    {
-      limite: 39.9,
-      estado: 'obesidade2',
-      titulo: 'Obesidade grau 2',
-      badge: 'Obesidade grau 2',
-      descricao: 'O acompanhamento profissional é especialmente importante nesta faixa.'
-    },
-    {
-      limite: Infinity,
-      estado: 'obesidade3',
-      titulo: 'Obesidade grau 3',
-      badge: 'Obesidade grau 3',
-      descricao: 'Essa faixa pede atenção e acompanhamento profissional.'
-    }
-  ];
-
-  const numberFormatter = new Intl.NumberFormat('pt-BR', {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  });
-
-  const setError = (field, message) => {
-    field.textContent = message;
-  };
-
-  const clearErrors = () => {
-    setError(pesoErro, '');
-    setError(alturaErro, '');
-  };
-
-  const highlightLegend = (estado) => {
-    faixaItens.forEach((item) => {
-      item.classList.toggle('is-active', item.dataset.faixa === estado);
-    });
-  };
-
-  const resetResult = (initial = false) => {
-    resultCard.dataset.state = '';
-    resultadoValor.textContent = '—';
-    resultadoClasse.textContent = initial
-      ? 'Preencha os dados para ver a classificação.'
-      : 'Classificação: —';
-    resultadoDescricao.textContent = initial
-      ? 'Use o formulário para calcular o IMC e ver a interpretação.'
-      : 'Os resultados aparecem aqui depois do cálculo.';
-    highlightLegend('');
-  };
-
-  const showResult = ({ imc, estado, titulo, badge, descricao }) => {
-    resultCard.dataset.state = estado;
-    resultadoValor.textContent = `${numberFormatter.format(imc)} kg/m²`;
-    resultadoClasse.textContent = badge;
-    resultadoDescricao.textContent = descricao;
-    highlightLegend(estado);
-  };
-
-  const parseInputValue = (input) => {
-    const normalized = String(input.value || '').replace(',', '.').trim();
-    return normalized === '' ? NaN : Number(normalized);
-  };
-
-  const validateInputs = () => {
-    clearErrors();
-
-    const peso = parseInputValue(pesoInput);
-    const altura = parseInputValue(alturaInput);
-
-    let valid = true;
-
-    if (!Number.isFinite(peso)) {
-      setError(pesoErro, 'Informe um peso válido.');
-      valid = false;
-    } else if (peso <= 0) {
-      setError(pesoErro, 'O peso precisa ser maior que zero.');
-      valid = false;
-    } else if (peso < 10 || peso > 500) {
-      setError(pesoErro, 'Use um valor plausível para o peso.');
-      valid = false;
-    }
-
-    if (!Number.isFinite(altura)) {
-      setError(alturaErro, 'Informe uma altura válida.');
-      valid = false;
-    } else if (altura <= 0) {
-      setError(alturaErro, 'A altura precisa ser maior que zero.');
-      valid = false;
-    } else if (altura < 50 || altura > 250) {
-      setError(alturaErro, 'Use a altura em centímetros, por exemplo: 175.');
-      valid = false;
-    }
-
-    return { valid, peso, altura };
-  };
-
-  const classifyImc = (imc) => {
-    for (const faixa of faixaMap) {
-      if (imc <= faixa.limite) {
-        return faixa;
+  if (form) {
+    const fields = {
+      peso: { min: 10, max: 250, label: 'peso' },
+      altura: { min: 80, max: 220, label: 'altura' },
+      idade: { min: 5, max: 17, label: 'idade', integer: true },
+      atividade: { min: 0, max: 300, label: 'minutos de atividade', integer: true },
+      tela: { min: 0, max: 24, label: 'horas de tela' }
+    };
+    const result = document.getElementById('resultCard');
+    const value = document.getElementById('valorIMC');
+    const badge = document.getElementById('classIMC');
+    const description = document.getElementById('descricaoIMC');
+    const habits = document.getElementById('orientacaoHabitos');
+    const screen = document.getElementById('orientacaoTela');
+    const resetResult = () => {
+      value.textContent = '—';
+      badge.textContent = 'Preencha os dados para ver a orientação.';
+      description.textContent = 'O resultado e as sugestões aparecem após o cálculo.';
+      habits.textContent = 'Informe sua rotina para ver uma sugestão de atividade.';
+      screen.textContent = 'Pausas e equilíbrio com as telas também contam.';
+    };
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      let valid = true;
+      const data = {};
+      Object.entries(fields).forEach(([id, limits]) => {
+        const input = document.getElementById(id);
+        const raw = input.value.trim().replace(',', '.');
+        const number = raw === '' ? NaN : Number(raw);
+        const error = document.getElementById(`${id}Erro`);
+        const good = /^\d+(?:[.,]\d+)?$/.test(raw) && Number.isFinite(number) && number >= limits.min && number <= limits.max && (!limits.integer || Number.isInteger(number));
+        error.textContent = good ? '' : `Informe ${limits.label} entre ${limits.min} e ${limits.max}${limits.integer ? ', em número inteiro' : ''}.`;
+        input.setAttribute('aria-invalid', String(!good));
+        if (!good) {
+          valid = false;
+          if (!form.dataset.firstInvalid) form.dataset.firstInvalid = id;
+        }
+        data[id] = number;
+      });
+      if (!valid) {
+        resetResult();
+        document.getElementById(form.dataset.firstInvalid).focus();
+        delete form.dataset.firstInvalid;
+        return;
       }
-    }
-    return faixaMap[faixaMap.length - 1];
-  };
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const { valid, peso, altura } = validateInputs();
-    if (!valid) {
-      resetResult();
-      return;
-    }
-
-    const alturaM = altura / 100;
-    const imc = peso / (alturaM * alturaM);
-    const faixa = classifyImc(imc);
-
-    showResult({
-      imc,
-      estado: faixa.estado,
-      titulo: faixa.titulo,
-      badge: faixa.badge,
-      descricao: faixa.descricao
+      delete form.dataset.firstInvalid;
+      const imc = data.peso / Math.pow(data.altura / 100, 2);
+      value.textContent = `${new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(imc)} kg/m²`;
+      badge.textContent = 'Sem classificação automática';
+      description.textContent = `Aos ${data.idade} anos, o IMC precisa ser interpretado por curvas próprias para idade e sexo. Este número não é um diagnóstico.`;
+      if (data.atividade < 30) {
+        habits.textContent = `Você relatou ${data.atividade} min/dia. Experimente começar com 10 a 15 minutos de caminhada, dança ou brincadeira e aumentar gradualmente, conforme se sentir bem.`;
+      } else if (data.atividade < 60) {
+        habits.textContent = `Você relatou ${data.atividade} min/dia. Acrescente uma brincadeira, caminhada ou dança de 10 a 20 minutos em alguns dias para se aproximar da média de 60 minutos.`;
+      } else {
+        habits.textContent = `Você relatou ${data.atividade} min/dia. Continue variando as atividades que gosta e inclua brincadeiras que fortalecem músculos e ossos em pelo menos 3 dias da semana.`;
+      }
+      screen.textContent = data.tela >= 3
+        ? `Você relatou ${data.tela} h/dia de tela para lazer. Faça pausas para levantar e tente trocar parte desse tempo por movimento, sem usar o IMC como meta de exercício.`
+        : `Você relatou ${data.tela} h/dia de tela para lazer. Mantenha pausas quando ficar muito tempo sentado e preserve tempo para descanso e movimento.`;
+      result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
-  });
-
-  form.addEventListener('reset', () => {
-    window.setTimeout(() => {
-      clearErrors();
-      resetResult(true);
-      pesoInput.focus();
-    }, 0);
-  });
-
-  [pesoInput, alturaInput].forEach((input) => {
-    input.addEventListener('input', () => {
-      if (input === pesoInput) setError(pesoErro, '');
-      if (input === alturaInput) setError(alturaErro, '');
+    form.addEventListener('reset', () => {
+      window.setTimeout(() => {
+        Object.keys(fields).forEach(id => {
+          document.getElementById(`${id}Erro`).textContent = '';
+          document.getElementById(id).removeAttribute('aria-invalid');
+        });
+        resetResult();
+      }, 0);
     });
-  });
-
-  limparBtn?.addEventListener('click', () => {
-    form.reset();
-  });
-
-  resetResult(true);
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-  const horasInput = document.getElementById('horasAtividade');
-  const recomendacao = document.getElementById('recomendacaoAtividade');
-  const cards = document.querySelectorAll('.routine-card');
-
-  if (!horasInput || !recomendacao) return;
-
-  function limparDestaque() {
-    cards.forEach((card) => {
-      card.style.border = '';
-      card.style.boxShadow = '';
-      card.style.transform = '';
-    });
+    Object.keys(fields).forEach(id => document.getElementById(id).addEventListener('input', (event) => {
+      document.getElementById(`${id}Erro`).textContent = '';
+      event.target.removeAttribute('aria-invalid');
+    }));
   }
 
-  function destacarCard(nivel) {
-    limparDestaque();
-
-    const card = document.querySelector(`[data-nivel="${nivel}"]`);
-
-    if (card) {
-      card.style.border = '2px solid var(--verde-500)';
-      card.style.boxShadow = '0 8px 24px rgba(74, 125, 35, 0.18)';
-      card.style.transform = 'translateY(-4px)';
-    }
+  const minutesInput = document.getElementById('minutosAtividade');
+  const recommendation = document.getElementById('recomendacaoAtividade');
+  if (minutesInput && recommendation) {
+    const cards = [...document.querySelectorAll('.routine-card')];
+    minutesInput.addEventListener('input', () => {
+      const minutes = Number(minutesInput.value);
+      cards.forEach(card => card.classList.remove('is-suggested'));
+      if (minutesInput.value === '') {
+        recommendation.textContent = 'Digite os minutos para receber uma ideia de atividade.';
+        return;
+      }
+      if (!Number.isFinite(minutes) || minutes < 0 || minutes > 300 || !Number.isInteger(minutes)) {
+        recommendation.textContent = 'Informe um número inteiro entre 0 e 300 minutos.';
+        return;
+      }
+      const level = minutes < 30 ? 'iniciante' : 'intermediario';
+      recommendation.textContent = minutes < 30
+        ? 'Comece com brincadeiras, dança ou caminhada leve e aumente o tempo aos poucos. A primeira rotina pode dar ideias.'
+        : minutes < 60
+          ? 'Você já se movimenta. A segunda rotina traz ideias para variar as atividades e se aproximar da média de 60 min/dia.'
+          : 'Você já relatou 60 minutos ou mais. Varie as atividades, respeite pausas e use a segunda rotina como inspiração; o nível avançado depende de experiência e supervisão.';
+      document.querySelector(`[data-nivel="${level}"]`).classList.add('is-suggested');
+    });
   }
-
-  horasInput.addEventListener('input', () => {
-    const horas = Number(horasInput.value);
-
-    if (horasInput.value === '') {
-      recomendacao.textContent =
-        'Digite uma quantidade de horas para receber uma sugestão de rotina.';
-
-      limparDestaque();
-      return;
-    }
-
-    if (horas < 0 || horas > 40) {
-      recomendacao.textContent =
-        'Informe uma quantidade de horas válida.';
-
-      limparDestaque();
-      return;
-    }
-
-    if (horas <= 2) {
-      recomendacao.textContent =
-        'Pelo seu tempo de atividade, a rotina iniciante pode ser uma boa opção para começar.';
-
-      destacarCard('iniciante');
-    }
-
-    else if (horas <= 5) {
-      recomendacao.textContent =
-        'Você já pratica atividade física com alguma frequência. A rotina intermediária pode ser uma boa opção.';
-
-      destacarCard('intermediario');
-    }
-
-    else {
-      recomendacao.textContent =
-        'Você já dedica bastante tempo à atividade física. A rotina avançada pode servir como referência, respeitando seu condicionamento e descanso.';
-
-      destacarCard('avancado');
-    }
-  });
 });
